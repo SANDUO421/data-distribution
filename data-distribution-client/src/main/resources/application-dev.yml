@@ -1,0 +1,6 @@
+server:
+  port: 8081
+# 自定义变量
+netty:
+  port: 9888
+  url: 127.0.0.1

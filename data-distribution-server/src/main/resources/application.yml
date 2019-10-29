@@ -1,0 +1,17 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+  server:
+    servlet:
+      context-path: /actuator
+spring:
+  application:
+    name: data-distribution-server
+  profiles:
+    active: dev
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+
