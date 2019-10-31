@@ -68,7 +68,7 @@ public class DataGetServiceImpl implements DataGetService {
                     if (socket == null || socket.isClosed()) {
                         // 连接socket
 //                        socket = new Socket("192.168.1.213", 9999);
-                        socket = new Socket("192.168.20.153", 8888);
+                        socket = new Socket("192.168.100.4", 2005);
                         inputStream = new DataInputStream(socket.getInputStream());
                     }
                     String result = inputStream.readUTF();
