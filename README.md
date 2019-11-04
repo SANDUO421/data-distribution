@@ -26,7 +26,7 @@ data-receive-client-1(192.168.1.213) -> data-distribution-server(192.168.1.207�
 ->data-receive-core-server(192.168.1.207，数据转发核心)->data-distribution-client(192.168.1.184,客户端1)
 ->data-distribution-client(192.168.1.168,客户端2)
 ```
-数据分发部署架构图-Netty：![数据分发部署架构图-Netty](https://github.com/SANDUO421/data-distribution/blob/master/images/数据分发部署架构图-Netty.jpg)
+数据分发部署架构图-Netty：![数据分发部署架构图-Netty](images/数据分发部署架构图-Netty.jpg)
 
 ## 参考文档
 ### Springboot 多模块开发依赖参考
