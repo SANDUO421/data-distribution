@@ -6,7 +6,7 @@
         <module>data-distribution-server</module>
         <module>data-distribution-client</module>
         <module>data-receive-client-1</module>
-        <module>data-receive-client-2</module>
+        <module>data-receive-core-server</module>
     </modules>
     <!--<parent>
         <groupId>org.springframework.boot</groupId>
