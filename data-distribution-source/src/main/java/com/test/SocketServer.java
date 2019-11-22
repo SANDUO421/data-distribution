@@ -1,3 +1,4 @@
+package com.test;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -5,6 +6,11 @@ import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @description:    数据源
  * @author:         sanduo
@@ -15,7 +21,7 @@ public class SocketServer {
 
     public static Date now = new Date();
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss.SSS");
-
+    private static ExecutorService executorService = new ThreadPoolExecutor(10,100, 100,TimeUnit.SECONDS,new LinkedBlockingDeque<Runnable>());
     public static void main(String[] args) throws IOException {
         //为了简单起见，所有的异常信息都往外抛
         int port = 9999;
@@ -25,8 +31,10 @@ public class SocketServer {
             //server尝试接收其他Socket的连接请求，server的accept方法是阻塞式的
             Socket socket = server.accept();
             //每接收到一个Socket就建立两个个新的线程来处理它
-            new Thread(new Task(socket)).start();
-            new Thread(new Task(socket)).start();
+            //for (int i = 0; i < 10; i++) {
+            //    new Thread(new Task(socket)).start();
+            //}
+            executorService.submit(new Task(socket));
         }
     }
 
@@ -77,11 +85,12 @@ public class SocketServer {
                }
                dataOutputStream.close();
 //               writer.close();
-               socket.close();
+
 
            }catch (Exception e){
-//               System.out.println("一个连接已断开");
-               e.printStackTrace();
+               //TODO
+               System.out.println("一个连接已断开");
+
            }
 
         }

@@ -44,8 +44,8 @@ public class DataDistributionClientHandler extends SimpleChannelInboundHandler<S
      * @return: void
      */
     private void channelWrite(ChannelHandlerContext ctx, Object msg) throws Exception {
-        log.info("登录成功");
-        log.info("开发发送数据！");
+        //log.info("登录成功");
+        //log.info("开发发送数据！");
         /**
          * 1.起一个线程，接收数据转发。
          * 2.传递ChannelHandlerContext进去
@@ -55,7 +55,7 @@ public class DataDistributionClientHandler extends SimpleChannelInboundHandler<S
          */
         dataGetService.getByRegisterCode(ctx);
 
-        log.info("数据发送完成......");
+        //log.info("数据发送完成......");
 
     }
 
@@ -73,7 +73,7 @@ public class DataDistributionClientHandler extends SimpleChannelInboundHandler<S
         String clientIp = inSocket.getAddress().getHostAddress();
         //断开连接时，必须关闭，否则造成资源浪费，并发量很大情况下可能造成宕机
         ctx.close();
-        System.out.println("channelInactive:" + clientIp);
+        //System.out.println("channelInactive:" + clientIp);
     }
 
 

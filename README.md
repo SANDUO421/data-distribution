@@ -28,6 +28,13 @@ data-receive-client-1(192.168.1.213) -> data-distribution-server(192.168.1.207�
 ```
 数据分发部署架构图-Netty：![数据分发部署架构图-Netty](images/数据分发部署架构图-Netty.jpg)
 
+#### 启动脚本
+```sbtshell
+nohup java -jar -Xms2048m -Xmx8192m data-distribution-server-0.0.1.jar 1>server.log 2>&1 &
+
+nohup java -jar -Xms2048m -Xmx8192m -XX:PermSize=8192m -XX:MaxPermSize=8192m data-receive-core-server-0.0.1.jar 1>receive.log 2>&1 &
+```
+
 ## 参考文档
 ### Springboot 多模块开发依赖参考
 * [Spring Boot 多模块开发-使用dependencyManagement版本管理](https://blog.csdn.net/qq_37604508/article/details/83064513)

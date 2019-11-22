@@ -36,7 +36,7 @@ public class DataGetServiceImpl implements DataGetService {
      * </pre>
      */
     private final ExecutorService executorService
-            = new ThreadPoolExecutor(10, 100, 10, TimeUnit.SECONDS,
+            = new ThreadPoolExecutor(1, 1, 10, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(), new ThreadPoolExecutor.CallerRunsPolicy());
 
     /**
@@ -46,8 +46,8 @@ public class DataGetServiceImpl implements DataGetService {
      */
     @Override
     public void getByRegisterCode(ChannelHandlerContext ctx) {
-        //executorService.submit(new SocketThread(ctx));
-        new SocketThread(ctx).start();
+        executorService.submit(new SocketThread(ctx));
+        //new SocketThread(ctx).start();
     }
 
     private static class SocketThread extends Thread {
@@ -76,9 +76,8 @@ public class DataGetServiceImpl implements DataGetService {
                 } catch (IOException e) {
                     try {
                         inputStream.close();
-                        socket.close();
                     } catch (IOException e1) {
-                        e1.printStackTrace();
+                       //TODO
                     }
 
                 }

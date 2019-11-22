@@ -54,6 +54,7 @@ public class DataDistributeServerHandler extends SimpleChannelInboundHandler<Str
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        System.out.print(msg);
         // log.info("加载客户端报文......");
         /**
          *  下面可以解析数据，保存数据，生成返回报文，将需要返回报文写入write函数

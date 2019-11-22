@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>data-receive-client-1</artifactId>
+    <artifactId>data-distribution-source</artifactId>
     <description>数据接收客户端-1</description>
 
     <properties>
@@ -27,6 +27,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.test.SocketServer</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

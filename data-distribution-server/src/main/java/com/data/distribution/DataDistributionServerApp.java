@@ -22,12 +22,9 @@ public class DataDistributionServerApp {
         DataDistributeServer dataDistributeServer = new DataDistributeServer();
         try {
             dataDistributeServer.start(9888);
-        } catch (Exception e) {
-            //TODO
         } finally {
             //释放资源
             dataDistributeServer.destroy();
         }
-        System.out.println( "Hello World!" );
     }
 }
