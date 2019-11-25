@@ -29,7 +29,8 @@ public class DataDistributionCoreServerApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        InetSocketAddress socketAddress = new InetSocketAddress("192.168.1.207", 9888);
+        InetSocketAddress socketAddress = new InetSocketAddress("192.168.20.132", 9888);
+        //InetSocketAddress socketAddress = new InetSocketAddress("192.168.1.207", 9888);
         //InetSocketAddress socketAddress = new InetSocketAddress("127.0.0.1", 9888);
         log.info("连接服务的地址【" + socketAddress.getAddress().getHostAddress() + "】，" + "端口为【" + socketAddress.getPort() + "】");
         //目的加入群组

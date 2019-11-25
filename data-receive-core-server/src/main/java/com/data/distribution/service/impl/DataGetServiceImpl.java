@@ -5,8 +5,10 @@ import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -66,8 +68,18 @@ public class DataGetServiceImpl implements DataGetService {
                 try {
                     if (socket == null || socket.isClosed()) {
                         // 连接socket
-                        socket = new Socket("192.168.1.213", 9999);
-                        inputStream = new DataInputStream(socket.getInputStream());
+                        //socket = new Socket("192.168.1.213", 9999);
+                        socket = new Socket("192.168.20.131", 9988);
+                        //inputStream = new DataInputStream(socket.getInputStream());
+                        BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream(), "iso8859-1"));
+                        String line = "";
+                        while ((line = is.readLine()) != null) {
+                            //System.out.println(line);
+                            ////发送数据
+                           ctx.writeAndFlush(line + "\r\n");
+
+                        }
+
                     }
                     String result = inputStream.readUTF();
                     System.out.print(result);

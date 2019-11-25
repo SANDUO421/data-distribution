@@ -1,17 +1,21 @@
 package com.data.distribution.netty.server;
 
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.ChannelMatcher;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.AttributeKey;
+import io.netty.util.CharsetUtil;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -64,14 +68,22 @@ public class DataDistributeServerHandler extends SimpleChannelInboundHandler<Str
         //响应客户端
         //ctx.channel().writeAndFlush("server already accept your message " + msg);
         //TODO 随后加密
-        channelGroup.forEach(ch -> {
-            if (ch != channel) {
-                ch.writeAndFlush(msg);
-            } else {
-                ch.writeAndFlush("【自己消息】" + msg + "\r\n");
-            }
-
-        });
+        if(channelGroup.size()>0) {
+            channelGroup.writeAndFlush(Unpooled.copiedBuffer(msg, CharsetUtil.UTF_8), new ChannelMatcher() {
+                @Override
+                public boolean matches(Channel ch) {
+                    return ch != channel;
+                }
+            });
+        }
+        //channelGroup.forEach(ch -> {
+        //    if (ch != channel) {
+        //        //ch.writeAndFlush(msg);
+        //    } else {
+        //        //ch.writeAndFlush("【自己消息】" + msg + "\r\n");
+        //    }
+        //
+        //});
 
     }
 

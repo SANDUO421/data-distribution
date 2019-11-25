@@ -28,7 +28,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.test.SocketServer</mainClass>
+                    <mainClass>com.test.SocketServer500</mainClass>
                 </configuration>
             </plugin>
         </plugins>

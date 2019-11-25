@@ -12,12 +12,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description:    数据源
+ * @description:    数据源:模拟每秒500M
  * @author:         sanduo
  * @date:           2019/11/1 19:30
  * @version:        1.0
  */
-public class SocketServer {
+public class SocketServer500 {
 
     public static Date now = new Date();
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss.SSS");
@@ -27,14 +27,14 @@ public class SocketServer {
         int port = 9988;
         //定义一个ServerSocket监听在端口9999上
         ServerSocket server = new ServerSocket(port);
+        //server尝试接收其他Socket的连接请求，server的accept方法是阻塞式的
+        Socket socket = server.accept();
         while (true) {
-            //server尝试接收其他Socket的连接请求，server的accept方法是阻塞式的
-            Socket socket = server.accept();
             //每接收到一个Socket就建立两个个新的线程来处理它
-            //for (int i = 0; i < 10; i++) {
-            //    new Thread(new Task(socket)).start();
-            //}
-            executorService.submit(new Task(socket));
+            for (int i = 0; i < 500; i++) {
+                new Thread(new Task(socket)).start();
+            }
+            //executorService.submit(new Task(socket));
         }
     }
 

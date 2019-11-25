@@ -19,7 +19,7 @@ socket(服务端) -> socket（客户端，接收数据，分发到RabbitMq）->R
 ```
 
 数据分发方案图-MQ：![数据分发方案图-MQ](images/数据分发方案图.png)
-
+ 
 #### 1.2.3 部署架构图
 ```
 data-receive-client-1(192.168.1.213) -> data-distribution-server(192.168.1.207，服务器)
