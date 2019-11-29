@@ -35,6 +35,11 @@ nohup java -jar -Xms2048m -Xmx8192m data-distribution-server-0.0.1.jar 1>server.
 nohup java -jar -Xms2048m -Xmx8192m -XX:PermSize=8192m -XX:MaxPermSize=8192m data-receive-core-server-0.0.1.jar 1>receive.log 2>&1 &
 ```
 
+#### Netty运行机理
+Netty运行机理: ![Netty运行机理.jpg](images/Netty运行机理.jpg)
+Netty运行机理: ![Netty线程原理.jpg](images/Netty线程原理.jpg)
+参考[Reactor模式](https://www.cnblogs.com/crazymakercircle/p/9833847.html)
+
 ## 参考文档
 ### Springboot 多模块开发依赖参考
 * [Spring Boot 多模块开发-使用dependencyManagement版本管理](https://blog.csdn.net/qq_37604508/article/details/83064513)

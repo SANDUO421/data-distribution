@@ -7,6 +7,7 @@
         <module>data-distribution-client</module>
         <module>data-distribution-source</module>
         <module>data-receive-core-server</module>
+        <module>netty-server</module>
     </modules>
     <!--<parent>
         <groupId>org.springframework.boot</groupId>

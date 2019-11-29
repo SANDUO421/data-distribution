@@ -19,7 +19,8 @@ public class DataDistributionClientHandler extends SimpleChannelInboundHandler<S
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         ctx.channel().attr(AttributeKey.valueOf("Attribute_key")).set(msg);
-        System.out.println(msg);
+        //System.out.println(msg);
+        log.info(msg);
     }
 
     @Override

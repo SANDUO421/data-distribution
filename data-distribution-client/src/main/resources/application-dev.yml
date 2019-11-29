@@ -4,3 +4,7 @@ server:
 netty:
   port: 9888
   url: 127.0.0.1
+logging:
+  level:
+    com.data.distribution: info
+  path: ./logs/
